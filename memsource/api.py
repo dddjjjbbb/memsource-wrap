@@ -583,6 +583,19 @@ class TranslationMemory(BaseApi):
 
         self._post('transMemory/insert', params)
 
+    def search(self, translation_memory_id: int, query: str, source_lang: str):
+        return self._post('transMemory/search', {
+            'transMemory': translation_memory_id,
+            'query': query,
+            'sourceLang': source_lang,
+        })
+
+    def deleteSourceAndTranslations(self, translation_memory_id: int, segment_id: str):
+        return self._post('transMemory/deleteSourceAndTranslations', {
+            'transMemory': translation_memory_id,
+            'segmentId': segment_id,
+        })
+
 
 class Asynchronous(BaseApi):
     """
